@@ -15,13 +15,13 @@
 ######################## Inputs ######################################
 
 # This is the environment which gets sourced before running.
-CMSSWENV=/net/hisrv0001/home/luck/CMSSW_5_3_8_HI_patch2/
+CMSSWENV=/net/hisrv0001/home/luck/UCT2015/CMSSW_5_3_8_HI_patch2/src
 
 # This is the python config which is run using cmsRun.
 # Must be relative path from submit_condor.sh
 #CONFIGFILE=runForest_44X.py
-#CONFIGFILE=yongsun_Dec_V45_reemul.py
-CONFIGFILE=runForest_pPb_JEC.py
+CONFIGFILE=makeEfficiencyTree_cfg.py
+#CONFIGFILE=makeRateTrees_cfg.py
 
 # This is the file list of inputs to give to the python config. Shell
 # globbing is useful here.
@@ -30,22 +30,24 @@ CONFIGFILE=runForest_pPb_JEC.py
 #DATASET=/mnt/hadoop/cms/store/user/yenjie/Hydjet1.8/Z2/Dijet80/tracking_v1/*
 #DATASET=/mnt/hadoop/cms/store/user/davidlw/PAPhysics/PA2012_RAWSKIM_SingleTrack_v2//9f9d3879c8002f93796d3cf9442111e1/*
 #DATASET=/mnt/hadoop/cms/store/user/icali/AllPhysics2760/pp276_Skim_HLT_L1BscMinBiasORBptxPlusANDMinus_v2/e16e4b5a36aa9fa33062b47de2724a60/*
-DATASET=/mnt/hadoop/cms/store/user/astrelni/pp_photon_pythia/pt_40_rand/*
+#DATASET=/mnt/hadoop/cms/store/user/icali/HIMinBiasUPC/HIMinBiasUPC_Skim_HLT_HIMinBiasHfOrBSC_Centrality0-10/64ca16868e481177958780733023cfa2/*.root
+#DATASET=/mnt/hadoop/cms/store/user/icali/HIMinBiasUPC/Skim_HLT_HIMinBiasHfOrBSC_Cent0_10_538HIpa2_RECO/a37cd2798e1f092419699a12291f1745/*.root
+DATASET=/mnt/hadoop/cms/store/user/icali/HIMinBiasUPC/Skim_HLT_HIMinBiasHfOrBSC_538HIpa2_RECO/a37cd2798e1f092419699a12291f1745/*.root
 
 # This is the folder to which the output is copied after the job
 # finishes.  The folder is created if it does not already exist.
 # WARNING: large files should not be copied to destinations beginning
 # with '/net'. Use local disks or hadoop instead.
 #DESTINATION=/mnt/hadoop/cms/store/user/luck/HiMinbias_RecHitTowers_MC_v2
-DESTINATION=/mnt/hadoop/cms/store/user/luck/PP2013_MC_v2
+DESTINATION=/mnt/hadoop/cms/store/user/luck/L1Eff_minbias
 
 # This is the name of the output files which will be placed in the
 # destination folder. "_${jobNum}.root" is appended to this filename
 # to avoid collisions.
-OUTFILE="test_output.root"
+OUTFILE="L1Eff_minbias"
 
 # The number of input files each job should handle. 
-FILESPERJOB=20
+FILESPERJOB=1
 
 # The total number of input files to use. If this number is larger
 # than the real number of files in 'DATASET', uses all of the files in
@@ -54,12 +56,12 @@ MAXFILES=10000
 
 # Location where condor logs will be placed. Logs will be named
 # 'LOGNAME-$dateTime-$jobNum' appended to avoid collision.
-LOGDIR=/net/hisrv0001/home/luck/CONDOR_LOGS/2013-04-08-PPPythia_foresting
-LOGNAME=PPPythia_foresting
+LOGDIR=/net/hisrv0001/home/luck/CONDOR_LOGS/2013-12-03-L1Eff_central
+LOGNAME=log
 
 
 ########################## Create subfile ###############################
-dateTime=$(date +%Y%m%d%H%M)
+dateTime=$(date +%Y-%m-%d-%H:%M)
 fileCounter=0
 jobNum=0
 inputList=()

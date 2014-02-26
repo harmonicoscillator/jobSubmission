@@ -24,7 +24,7 @@ DESTINATION=$3
 OUTFILE=$4
 
 source /osg/app/cmssoft/cms/cmsset_default.sh
-export SCRAM_ARCH=slc5_amd64_gcc462
+#export SCRAM_ARCH=slc5_amd64_gcc462
 cd $CMSSWENV
 eval `scramv1 runtime -sh` 
 cd -
