@@ -1,9 +1,7 @@
 source /osg/grid/setup.sh
-grid-proxy-init
-source /osg/app/crab/crab.sh # CRAB
 source /osg/app/glite/etc/profile.d/grid_env.sh # gLite-UI
-source /osg/app/cmssoft/cms/cmsset_default.sh #CMSSW
+voms-proxy-init --valid 168:00 -voms cms 
+voms-proxy-info --all
+source /cvmfs/cms.cern.ch/crab/crab.sh # CRAB2
+echo "WARN: Make sure you have your sourced a CMSSW env before submitting crab jobs."
 
-cd /net/hisrv0001/home/luck/CMSSW_5_3_8_HI_patch1/src
-eval `scram runtime -sh`
-cd -
