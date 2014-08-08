@@ -1,6 +1,6 @@
-source /cvmfs/grid.cern.ch/3.2.11-1/etc/profile.d/grid-env.sh
+source /cvmfs/grid.cern.ch/emi-wn-3.7.3-1_sl6v2/etc/profile.d/setup-emi3-wn-example.sh
 source /cvmfs/cms.cern.ch/crab/crab.sh # CRAB2
-voms-proxy-init --valid 168:00 -voms cms 
-voms-proxy-info --all
-echo "WARN: Make sure you have your sourced a CMSSW env before submitting crab jobs."
+echo "Warn. This is a Frankenstein crab environment."
 
+# test command
+#myproxy-init -s myproxy.cern.ch -d -n -t 48 -c 720 -v
